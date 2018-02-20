@@ -18,4 +18,15 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+To see game field with all the players, go to the `Players` link on the index page.
+
+Players:
+- Are able to see any other players in the area of 32x32 squares. You can move this field of view,
+using `W,A,S,D` buttons.
+
+To stop and start tasks for players, go to the `Moderators` link on the index page.
+
+Moderators:
+- Are able to search for a player by row-column pair.
+- Stop (erase) tasks for players, until there is only 1 left.
+- Add a new task for a certain player, if his number of tasks `N` < 4.

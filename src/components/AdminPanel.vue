@@ -20,10 +20,10 @@
       <div v-for="(task, index) in constructTasks(player.tasks)" :key="task">
         <li>
           {{task}}
-          <v-btn v-on:click="clearTask(index)">Stop Task</v-btn>
+          <v-btn v-if="playerDeleteTasks" v-on:click="clearTask(index)">Stop Task</v-btn>
         </li>
       </div>
-      <v-btn v-if="playerTasks" v-on:click="addTask">Add Task</v-btn>
+      <v-btn v-if="playerAddTasks" v-on:click="addTask">Add Task</v-btn>
     </div>
   </div>
 </template>
@@ -45,8 +45,11 @@ export default {
     }.bind(this), 700)
   },
   computed: {
-    playerTasks () {
+    playerAddTasks () {
       return this.player.tasks.length < 4
+    },
+    playerDeleteTasks () {
+      return this.player.tasks.length > 1
     }
   },
   methods: {
@@ -100,6 +103,8 @@ export default {
         if (taskTime != null) {
           set.push(`Task ${index} -  ` + taskTime + ' left; ')
           index += 1
+        } else {
+          tasks.pop(task)
         }
       })
       return set
